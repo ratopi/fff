@@ -1,0 +1,22 @@
+#!/bin/sh
+
+# Alte Dateien loeschen
+rm -rf deploy-ffm
+
+# Ausgabe-Verzeichnis erstellen
+mkdir -p deploy-ffm/untested
+#Rename files for deployment
+for file in `ls bin/ar71xx/*factory.bin`
+do
+  f=${file##*/} #Strip basename
+  f=${f/-squashfs-factory.bin/} #Remove annoying suffix
+  f=${f/openwrt-ar71xx-generic/ff-ffm} #Change prefix
+  mv $file deploy-ffm/untested/$f-v.${VERSION}.bin
+done
+
+# Packages verschieben
+mv bin/ar71xx/packages* deploy-ffm
+
+#Define / move tested images
+#mv deploy-ffm/untested/{*741*,*1043*,*wr740n-v4*,*wdr4300*} deploy-ffm/
+
