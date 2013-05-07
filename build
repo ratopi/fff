@@ -9,13 +9,17 @@ cp feeds.conf.pushable feeds.conf.default
 scripts/feeds update -a 
 scripts/feeds install -a
 
+communitystring=$(cat community)
+
+localver=$VERSION-${communitystring}
+
 # Tags wie benoetigt erstellen
-./create_tags.sh $VERSION
+./create_tags.sh $localver
 
 # Version-Strings codieren
-echo "${VERSION}" > version
-echo "${VERSION}" > files/etc/freifunk_version
+echo "${localver}" > version
+echo "${localver}" > files/etc/freifunk_version
 
 #Build starten
-make -j16 V=s CONFIG_VERSION_NUMBER="$VERSION (ff-ffm)"
+make -j16 V=s CONFIG_VERSION_NUMBER="$localver (ff-ffm)"
 
