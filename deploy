@@ -43,7 +43,7 @@ sha256sum packages/* >> SHA256SUMS
 md5sum packages/* >> MD5SUMS
 }
 
-gpg -u FA27C6E4 -ab --output SHA256SUMS.sign SHA256SUMS
+# gpg -u FA27C6E4 -ab --output SHA256SUMS.sign SHA256SUMS
 
 # md5
 
