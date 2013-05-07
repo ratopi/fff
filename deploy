@@ -20,3 +20,32 @@ mv bin/ar71xx/packages* deploy-ffm
 #Define / move tested images
 #mv deploy-ffm/untested/{*741*,*1043*,*wr740n-v4*,*wdr4300*} deploy-ffm/
 
+#Sign files
+
+cd deploy-ffm
+# sha256 
+shopt -s nullglob
+[[ -n *.bin ]] && 
+{
+sha256sum *.bin > SHA256SUMS
+md5sum *.bin > MD5SUMS
+}
+
+[[ -n untested/*.bin ]] && 
+{
+sha256sum untested/* >> SHA256SUMS
+md5sum untested/* >> MD5SUMS1
+}
+
+[[ -n packages/* ]] && 
+{
+sha256sum packages/* >> SHA256SUMS
+md5sum packages/* >> MD5SUMS
+}
+
+gpg -u FA27C6E4 -ab --output SHA256SUMS.sign SHA256SUMS
+
+# md5
+
+# sign images with kbu key
+gpg -u FA27C6E4 -ab --output MD5SUMS.sign MD5SUMS
