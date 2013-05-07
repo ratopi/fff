@@ -2,7 +2,7 @@ src-git packages git://github.com/ff-kbu/fff-packages.git;1.0
 src-git luci git://github.com/ff-kbu/fff-luci.git;1.0
 #src-svn luci http://svn.luci.subsignal.org/luci/1.0
 #src-git fastd git://github.com/ff-kbu/fff-fastd.git;master
-src-git fastd https://github.com/ff-kbu/fff-fastd/commits/1.0
+src-git fastd https://github.com/ff-kbu/fff-fastd.git;1.0
 src-git config_mode git://github.com/ff-kbu/fff-config-mode.git;1.0
 src-git watchdog git://github.com/ff-kbu/ath9k-watchdog.git;1.1beta15
 
