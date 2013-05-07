@@ -1,0 +1,21 @@
+#!/bin/sh
+## Bereinigen
+make clean
+
+## Zum erstellen der Tags brauchen wir github-URLs auf die ein Push moeglich ist
+cp feeds.conf.pushable feeds.conf.default
+
+# Fees installieren
+scripts/feeds update -a 
+scripts/feeds install -a
+
+# Tags wie benoetigt erstellen
+./create_tags.sh $VERSION
+
+# Version-Strings codieren
+echo "${VERSION}" > version
+echo "${VERSION}" > files/etc/freifunk_version
+
+#Build starten
+make -j16 V=s CONFIG_VERSION_NUMBER="$VERSION (ff-ffm)"
+
