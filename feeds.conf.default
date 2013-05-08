@@ -1,6 +1,6 @@
 src-git packages git://github.com/ff-kbu/fff-packages.git;1.0
-#src-git luci git://github.com/ff-kbu/fff-luci.git;1.0
-src-git luci git://github.com/ff-kbu/fff-luci.git;v0.3
+src-git luci git://github.com/ff-kbu/fff-luci.git;1.0
+#src-git luci git://github.com/ff-kbu/fff-luci.git;v0.3
 
 #src-svn luci http://svn.luci.subsignal.org/luci/1.0
 #src-git fastd git://github.com/ff-kbu/fff-fastd.git;master
